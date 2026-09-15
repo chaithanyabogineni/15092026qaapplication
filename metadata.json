@@ -1,0 +1,6 @@
+{
+  "name": "Zeta QA Platform",
+  "description": "Enterprise Email QA Platform powered by Zeta Global for multi-team campaign quality assurance and verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

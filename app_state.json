@@ -1,0 +1,35 @@
+{
+  "quick_login_enabled": false,
+  "users": [
+    {
+      "id": "1ad7bc0f-7d34-474e-a226-2ca8637c069a",
+      "name": "Admin User",
+      "email": "cbogineni@zetaglobal.com",
+      "role": "admin",
+      "team": "HP-APJ",
+      "status": "active",
+      "last_login": "2026-09-11T08:31:16.962Z",
+      "created_at": "2026-07-23T05:59:56.585142+00:00"
+    },
+    {
+      "id": "9535db07-8d88-4e17-8f21-bb788b86d8ab",
+      "name": "QA User ",
+      "email": "hpapjteam@gmail.com",
+      "role": "user",
+      "team": "HP-APJ",
+      "status": "active",
+      "last_login": "2026-09-11T08:52:23.652Z",
+      "created_at": "2026-07-23T06:21:35.801478+00:00"
+    },
+    {
+      "id": "fe3df56a-a684-4468-8d1c-52ced5eadc81",
+      "name": "Chaithanya Babu B",
+      "email": "cbogineni@gmail.com",
+      "role": "user",
+      "team": "HP-APJ",
+      "status": "active",
+      "last_login": "Never",
+      "created_at": "2026-09-11T08:31:44.327+00:00"
+    }
+  ]
+}
