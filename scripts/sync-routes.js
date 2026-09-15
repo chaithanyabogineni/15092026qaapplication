@@ -25,23 +25,18 @@ function copyDir(src, dest) {
   }
 }
 
-// 1. Ensure server/routes and api/routes exist and are synchronized
-if (fs.existsSync(serverRoutes)) {
-  copyDir(serverRoutes, apiRoutes);
-}
+// 1. Ensure server/routes and server/utils are the single source of truth.
+// IMPORTANT: Do NOT copy routes or utils into /api because Vercel scans /api
+// and compiles every single .ts file as a separate serverless function, causing
+// the build to run 16 times in a loop.
 if (fs.existsSync(apiRoutes)) {
-  copyDir(apiRoutes, serverRoutes);
-}
-
-// 2. Ensure server/utils and api/utils exist and are synchronized
-if (fs.existsSync(serverUtils)) {
-  copyDir(serverUtils, apiUtils);
+  fs.rmSync(apiRoutes, { recursive: true, force: true });
 }
 if (fs.existsSync(apiUtils)) {
-  copyDir(apiUtils, serverUtils);
+  fs.rmSync(apiUtils, { recursive: true, force: true });
 }
 
-// 3. Ensure index.ts exists in both routes directories
+// 2. Ensure index.ts exists in server/routes directory
 const routeIndexContent = `export { router as campaignsRouter, default as campaigns } from "./campaigns";
 export { router as foldersRouter, default as folders } from "./folders";
 export { router as miscRouter, default as misc } from "./misc";
@@ -53,9 +48,6 @@ export { router as aiRouter, default as ai } from "./ai";
 
 if (fs.existsSync(serverRoutes)) {
   fs.writeFileSync(path.join(serverRoutes, "index.ts"), routeIndexContent, "utf8");
-}
-if (fs.existsSync(apiRoutes)) {
-  fs.writeFileSync(path.join(apiRoutes, "index.ts"), routeIndexContent, "utf8");
 }
 
 console.log("✓ Routes and utilities synchronized successfully for build.");
